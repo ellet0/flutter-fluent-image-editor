@@ -2,15 +2,6 @@
 
 Simple Image editor app
 
-## Getting Started
+<img width="810" alt="image" src="https://user-images.githubusercontent.com/73608287/189483997-58b293a8-0f3f-42a3-bf1b-ea99fcc28cab.png">
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This application is not optmizied well for using and I don't plan to publish it
