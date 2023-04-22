@@ -22,7 +22,7 @@ class _ImageListScreenState extends State<ImageListScreen> {
           }
           if (snapshot.hasError) return const Center(child: Text('Error'));
           return Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: GridView.builder(
                 itemCount: snapshot.data!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

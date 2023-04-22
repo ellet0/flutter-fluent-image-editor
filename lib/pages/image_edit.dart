@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart' as m;
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart' as m;
 import 'package:image_painter/image_painter.dart';
 
 class ImageEdit extends StatefulWidget {
@@ -44,9 +44,9 @@ class _ImageEditState extends State<ImageEdit> {
       actions: Align(
         alignment: Alignment.centerRight,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: OutlinedButton(
-              child: Text('Done'),
+              child: const Text('Done'),
               onPressed: () {
                 var editedImage = globalKey.currentState!.exportImage();
                 Navigator.pop(context, editedImage);

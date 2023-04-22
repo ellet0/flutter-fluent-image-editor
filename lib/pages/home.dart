@@ -15,49 +15,28 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return NavigationView(
-      appBar: null,
       pane: _getNavigationPane(),
-      content: _getContentBody(),
     );
   }
 
-  NavigationAppBar _getAppBar() => const NavigationAppBar(
-        title: Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Image editor',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        automaticallyImplyLeading: false,
-      );
-
   NavigationPane _getNavigationPane() => NavigationPane(
-        header: FlutterLogo(
+        header: const FlutterLogo(
           style: FlutterLogoStyle.horizontal,
           size: 100,
         ),
         selected: _selectedIndex,
-        onChanged: (value) => setState(() {
-          _selectedIndex = value;
-        }),
+        onChanged: (value) => setState(() => _selectedIndex = value),
         items: [
           PaneItem(
-            icon: Icon(FluentIcons.add),
-            title: Text('Add image'),
+            icon: const Icon(FluentIcons.add),
+            title: const Text('Add image'),
+            body: const AddImageScreen(),
           ),
           PaneItem(
-            icon: Icon(FluentIcons.photo_collection),
-            title: Text('Edited images'),
+            icon: const Icon(FluentIcons.photo_collection),
+            title: const Text('Edited images'),
+            body: const ImageListScreen(),
           ),
-        ],
-      );
-
-  NavigationBody _getContentBody() => NavigationBody(
-        index: _selectedIndex,
-        children: const [
-          AddImageScreen(),
-          ImageListScreen(),
         ],
       );
 }

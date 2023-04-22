@@ -4,8 +4,8 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:image_editor/pages/image_edit.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 
 class AddImageScreen extends StatefulWidget {
   const AddImageScreen({Key? key}) : super(key: key);
@@ -31,11 +31,14 @@ class _AddImageScreenState extends State<AddImageScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       OutlinedButton(
-                          child: const Text('Remove image'), onPressed: _removeImage),
+                          onPressed: _removeImage,
+                          child: const Text('Remove image')),
                       OutlinedButton(
-                          child: const Text('Edit image'), onPressed: _editImage),
+                          onPressed: _editImage,
+                          child: const Text('Edit image')),
                       OutlinedButton(
-                          child: const Text('Save image'), onPressed: _saveImage),
+                          onPressed: _saveImage,
+                          child: const Text('Save image')),
                     ],
                   )
                 ],
@@ -47,9 +50,8 @@ class _AddImageScreenState extends State<AddImageScreen> {
 
   Widget _getPickImage() => GestureDetector(
         onTap: () async {
-          FilePickerResult? result = await FilePicker.platform.pickFiles(
-            type: FileType.image
-          );
+          FilePickerResult? result =
+              await FilePicker.platform.pickFiles(type: FileType.image);
           if (result == null) return;
           _selectedImage = File(result.files.single.path!).readAsBytesSync();
           _imageName = result.names.single;
@@ -91,14 +93,14 @@ class _AddImageScreenState extends State<AddImageScreen> {
 
   void _saveImage() async {
     final tempDir = await getApplicationSupportDirectory();
-    final path = '${tempDir.path}/${DateTime.now().millisecondsSinceEpoch}${p.extension(_imageName!)}';
-    print(path);
+    final path =
+        '${tempDir.path}/${DateTime.now().millisecondsSinceEpoch}${p.extension(_imageName!)}';
     File file = File(path);
     file.writeAsBytesSync(_selectedImage!);
     setState(() {
       _selectedImage = null;
     });
-    print('Image saved to ${file.path}');
-    showSnackbar(context, const Snackbar(content: Text('Image saved')));
+    Future.microtask(() =>
+        showSnackbar(context, const Snackbar(content: Text('Image saved'))));
   }
 }
